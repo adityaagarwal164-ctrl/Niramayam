@@ -1,34 +1,97 @@
-// Modal functionality
-const modal = document.getElementById("appointmentModal");
-const bookBtn = document.getElementById("bookBtn");
-const heroBookBtn = document.getElementById("heroBookBtn");
-const closeBtn = document.querySelector(".close");
+const body = document.body;
+const navbar = document.getElementById("navbar");
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
 
-bookBtn.onclick = () => modal.style.display = "block";
-heroBookBtn.onclick = () => modal.style.display = "block";
-closeBtn.onclick = () => modal.style.display = "none";
+const appointmentModal = document.getElementById("appointmentModal");
+const modalOverlay = document.getElementById("modalOverlay");
+const closeModal = document.getElementById("closeModal");
 
-window.onclick = (event) => {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
+const openButtons = [
+  document.getElementById("bookBtn"),
+  document.getElementById("heroBookBtn"),
+  document.getElementById("contactBookBtn"),
+  document.getElementById("mobileBookBtn")
+].filter(Boolean);
 
-// Scroll-triggered animations for service cards
-const cards = document.querySelectorAll(".card");
-
-function revealOnScroll() {
-  const triggerBottom = window.innerHeight * 0.85;
-  cards.forEach(card => {
-    const cardTop = card.getBoundingClientRect().top;
-    if (cardTop < triggerBottom) {
-      card.style.opacity = 1;
-      card.style.transform = "translateY(0)";
-      card.style.transition = "all 0.6s ease";
-    }
-  });
+function openBookingModal() {
+  appointmentModal.classList.add("show");
+  body.style.overflow = "hidden";
 }
 
-// Run once on load and again on scroll
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
+function closeBookingModal() {
+  appointmentModal.classList.remove("show");
+  body.style.overflow = "";
+}
+
+openButtons.forEach((btn) => {
+  btn.addEventListener("click", openBookingModal);
+});
+
+closeModal.addEventListener("click", closeBookingModal);
+modalOverlay.addEventListener("click", closeBookingModal);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeBookingModal();
+  }
+});
+
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("active");
+  menuBtn.classList.toggle("active");
+});
+
+document.querySelectorAll(".mobile-menu a").forEach((link) => {
+  link.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+    menuBtn.classList.remove("active");
+  });
+});
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 20) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.15
+  }
+);
+
+revealElements.forEach((el) => observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    const targetId = this.getAttribute("href");
+    if (!targetId || targetId === "#") return;
+
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
+    e.preventDefault();
+
+    const yOffset = -80;
+    const y =
+      target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth"
+    });
+  });
+});

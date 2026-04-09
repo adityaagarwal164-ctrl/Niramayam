@@ -1,79 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
   <title>Niramayam Physiotherapy Clinic</title>
-  <link rel="stylesheet" href="style.css">
+  <meta
+    name="description"
+    content="Niramayam Physiotherapy Clinic - futuristic, premium physiotherapy care website."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navigation -->
-  <header class="navbar">
-    <div class="logo">Niramayam Clinic</div>
-    <nav>
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><button id="bookBtn" class="btn-primary">Book Appointment</button></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="page-bg"></div>
+  <div class="noise"></div>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="hero-content">
-      <h1>Healing Through Innovation</h1>
-      <p>Advanced physiotherapy solutions for a healthier tomorrow.</p>
-      <button id="heroBookBtn" class="btn-secondary">Book Appointment</button>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="section">
-    <h2>Our Treatments</h2>
-    <div class="cards">
-      <div class="card">Stroke / Paralysis</div>
-      <div class="card">Parkinson’s Disease</div>
-      <div class="card">Facial Paralysis</div>
-      <div class="card">Walking Difficulties</div>
-      <div class="card">Cerebral Palsy</div>
-      <div class="card">Cervical Pain</div>
-      <div class="card">Spinal Cord Injury</div>
-      <div class="card">Neck / Shoulder / Back Pain</div>
-      <div class="card">Knee & Joint Pain</div>
-      <div class="card">Frozen Shoulder</div>
-      <div class="card">Arthritis</div>
-      <div class="card">Sciatica</div>
-      <div class="card">Heel Pain</div>
-      <div class="card">Sports Injuries</div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="section alt-bg">
-    <h2>About Us</h2>
-    <p>Led by Dr. Sumit Agrawal (BPT), our clinic blends modern technology with compassionate care to treat a wide range of conditions.</p>
-  </section>
-
-  <!-- Appointment Modal -->
-  <div id="appointmentModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Book Your Appointment</h2>
-      <!-- Calendly Embed -->
-      <div class="calendly-inline-widget" 
-           data-url="YOUR_CALENDLY_LINK_HERE" 
-           style="min-width:320px;height:630px;">
-      </div>
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
-    </div>
+  <div class="floating-orbs">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <span class="orb orb-4"></span>
+    <span class="orb orb-5"></span>
+    <span class="orb orb-6"></span>
+    <span class="orb orb-7"></span>
+    <span class="orb orb-8"></span>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Niramayam Physiotherapy Clinic | Gwalior, MP</p>
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <div class="brand-icon">✦</div>
+        <div>
+          <p class="brand-top">NIRAMAYAM</p>
+          <p class="brand-bottom">Physiotherapy Clinic</p>
+        </div>
+      </a>
+
+      <nav class="desktop-nav">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#conditions">Treatments</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-primary" id="bookBtn">Book Appointment</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#conditions">Treatments</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="btn btn-primary mobile-book" id="mobileBookBtn">Book Appointment</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-left reveal">
+          <div class="eyebrow">
+            <span>✦</span>
+            Healing Through Innovation
+          </div>
+
+          <h1>
+            Futuristic care for a
+            <span class="gradient-text">stronger, pain-free tomorrow.</span>
+          </h1>
+
+          <p class="hero-text">
+            Niramayam Physiotherapy Clinic combines compassionate treatment,
+            modern rehabilitation thinking, and beautifully guided patient care
+            to help people move better, recover faster, and live with confidence.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary big-btn" id="heroBookBtn">
+              Book Appointment
+            </button>
+            <a href="#services" class="btn btn-secondary big-btn">
+              Explore Treatments
+            </a>
+          </div>
+
+          <div class="metrics">
+            <div class="glass metric-card reveal">
+              <h3>100%</h3>
+              <p>Personalized care plans</p>
+            </div>
+            <div class="glass metric-card reveal">
+              <h3>1:1</h3>
+              <p>Focused recovery approach</p>
+            </div>
+            <div class="glass metric-card reveal">
+              <h3>24/7</h3>
+              <p>Comfort-first experience</p>
+            </div>
+            <div class="glass metric-card reveal">
+              <h3>Next-Gen</h3>
+              <p>Modern rehab mindset</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right reveal">
+          <div class="hero-image-wrap glass">
+            <img
+              src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1400&q=80"
+              alt="Modern physiotherapy treatment session"
+            />
+            <div class="hero-image-card glass">
+              <div>
+                <p class="small-label">Advanced Recovery Care</p>
+                <h3>
+                  Personalized physiotherapy with a premium, future-ready experience
+                </h3>
+              </div>
+              <div class="mini-icon">❤</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature-strip-section">
+      <div class="container">
+        <div class="glass feature-strip">
+          <div class="feature-box reveal">
+            <div class="feature-icon">✓</div>
+            <h3>Smart recovery planning</h3>
+            <p>
+              Every patient journey can be structured with clarity, comfort, and measurable progress.
+            </p>
+          </div>
+          <div class="feature-box reveal">
+            <div class="feature-icon">✓</div>
+            <h3>Human-first treatment</h3>
+            <p>
+              Modern clinical thinking blended with compassion, trust, and careful guidance.
+            </p>
+          </div>
+          <div class="feature-box reveal">
+            <div class="feature-icon">✓</div>
+            <h3>Premium clinic presence</h3>
+            <p>
+              A visually elevated brand experience that feels advanced, credible, and calming.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow center">
+            <span>✦</span>
+            Signature Services
+          </div>
+          <h2>A next-generation clinic website experience</h2>
+          <p>
+            This layout is designed to feel premium, trustworthy, and visually memorable while still being easy for patients to understand and use.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="glass service-card reveal">
+            <div class="card-icon">🧠</div>
+            <h3>Neuro Physiotherapy</h3>
+            <p>
+              Specialized rehab support for stroke, paralysis, Parkinson’s disease, facial palsy, cerebral palsy, and spinal cord conditions.
+            </p>
+            <span class="card-link">Learn more →</span>
+          </article>
+
+          <article class="glass service-card reveal">
+            <div class="card-icon">❤</div>
+            <h3>Pain Management</h3>
+            <p>
+              Advanced treatment plans for cervical pain, back pain, shoulder pain, knee pain, sciatica, heel pain, and arthritis.
+            </p>
+            <span class="card-link">Learn more →</span>
+          </article>
+
+          <article class="glass service-card reveal">
+            <div class="card-icon">⚡</div>
+            <h3>Mobility Recovery</h3>
+            <p>
+              Personalized gait training, posture correction, balance rehab, and movement restoration for walking difficulties.
+            </p>
+            <span class="card-link">Learn more →</span>
+          </article>
+
+          <article class="glass service-card reveal">
+            <div class="card-icon">🏃</div>
+            <h3>Sports Injury Rehab</h3>
+            <p>
+              High-performance recovery programs for muscle strain, ligament issues, joint instability, and return-to-sport rehab.
+            </p>
+            <span class="card-link">Learn more →</span>
+          </article>
+
+          <article class="glass service-card reveal">
+            <div class="card-icon">🛡</div>
+            <h3>Joint & Shoulder Care</h3>
+            <p>
+              Focused recovery for frozen shoulder, stiffness, reduced range of motion, and long-standing joint discomfort.
+            </p>
+            <span class="card-link">Learn more →</span>
+          </article>
+
+          <article class="glass service-card reveal">
+            <div class="card-icon">〰</div>
+            <h3>Advanced Therapy Plans</h3>
+            <p>
+              Structured, measurable, and modern recovery journeys with progress-based treatment designed around your lifestyle.
+            </p>
+            <span class="card-link">Learn more →</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="conditions">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow center">
+            <span>✦</span>
+            Treatment Focus
+          </div>
+          <h2>Conditions we commonly support</h2>
+          <p>
+            You can replace, add, or reorganize these based on your exact services. The design already makes them look premium and highly scannable.
+          </p>
+        </div>
+
+        <div class="conditions-grid">
+          <div class="glass condition-card reveal">Stroke / Paralysis</div>
+          <div class="glass condition-card reveal">Parkinson’s Disease</div>
+          <div class="glass condition-card reveal">Facial Paralysis</div>
+          <div class="glass condition-card reveal">Walking Difficulties</div>
+          <div class="glass condition-card reveal">Cerebral Palsy</div>
+          <div class="glass condition-card reveal">Cervical Pain</div>
+          <div class="glass condition-card reveal">Spinal Cord Injury</div>
+          <div class="glass condition-card reveal">Neck / Shoulder / Back Pain</div>
+          <div class="glass condition-card reveal">Knee & Joint Pain</div>
+          <div class="glass condition-card reveal">Frozen Shoulder</div>
+          <div class="glass condition-card reveal">Arthritis</div>
+          <div class="glass condition-card reveal">Sciatica</div>
+          <div class="glass condition-card reveal">Heel Pain</div>
+          <div class="glass condition-card reveal">Sports Injuries</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-image reveal">
+          <div class="glass image-frame">
+            <img
+              src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a41?auto=format&fit=crop&w=1200&q=80"
+              alt="Physiotherapy consultation in a clean modern clinic"
+            />
+          </div>
+        </div>
+
+        <div class="about-content reveal">
+          <div class="eyebrow">
+            <span>✦</span>
+            About the Clinic
+          </div>
+
+          <h2>
+            Designed around trust, comfort, and modern rehabilitation.
+          </h2>
+
+          <p>
+            Led by <strong>Dr. Sumit Agrawal (BPT)</strong>, Niramayam Physiotherapy Clinic aims to create an elevated care experience where advanced treatment thinking meets genuine, compassionate support.
+          </p>
+
+          <p>
+            This website concept gives your clinic a premium digital identity. It feels futuristic without looking confusing, and it keeps patient trust at the centre of every section.
+          </p>
+
+          <div class="about-points">
+            <div class="glass point-card reveal">✓ Responsive across mobile, tablet, and desktop</div>
+            <div class="glass point-card reveal">✓ Animated sections with premium glassmorphism</div>
+            <div class="glass point-card reveal">✓ Strong appointment-focused conversion flow</div>
+            <div class="glass point-card reveal">✓ Easy to customize with your real content</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow center">
+            <span>✦</span>
+            Patient Experience
+          </div>
+          <h2>Clean, premium, and confidence-building</h2>
+          <p>
+            These testimonial cards are placeholders for now. Replace them later with real reviews from your patients or Google ratings.
+          </p>
+        </div>
+
+        <div class="testimonial-grid">
+          <article class="glass testimonial-card reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              “The clinic experience feels modern, calm, and deeply caring. The sessions were structured, and I could genuinely feel progress week by week.”
+            </p>
+            <div class="testimonial-meta">
+              <h4>Patient Recovery Story</h4>
+              <span>Rehab & wellness feedback</span>
+            </div>
+          </article>
+
+          <article class="glass testimonial-card reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              “What stood out was the attention to detail. Every exercise was explained clearly, and the recovery plan felt personal instead of generic.”
+            </p>
+            <div class="testimonial-meta">
+              <h4>Mobility Improvement Case</h4>
+              <span>Rehab & wellness feedback</span>
+            </div>
+          </article>
+
+          <article class="glass testimonial-card reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              “Within a short time, my pain reduced significantly and my confidence came back. The treatment felt scientific and human at the same time.”
+            </p>
+            <div class="testimonial-meta">
+              <h4>Pain Relief Journey</h4>
+              <span>Rehab & wellness feedback</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="glass contact-box reveal">
+          <div class="contact-left">
+            <div class="eyebrow">
+              <span>✦</span>
+              Ready to Begin?
+            </div>
+            <h2>Let your website feel as advanced as your care.</h2>
+            <p>
+              This section is made to convert visitors into appointments. You can connect it directly to Calendly, WhatsApp, phone calls, or a custom form.
+            </p>
+
+            <div class="contact-actions">
+              <button class="btn btn-primary big-btn" id="contactBookBtn">
+                Book Appointment Now
+              </button>
+              <a href="tel:+919999999999" class="btn btn-secondary big-btn">
+                Call Clinic
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-right">
+            <div class="info-card glass">
+              <h4>Location</h4>
+              <p>Gwalior, Madhya Pradesh</p>
+            </div>
+            <div class="info-card glass">
+              <h4>Phone</h4>
+              <p>+91 99999 99999</p>
+            </div>
+            <div class="info-card glass">
+              <h4>Appointments</h4>
+              <p>Connect this with your real Calendly link</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 Niramayam Physiotherapy Clinic. Crafted with a premium futuristic interface.</p>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </footer>
+
+  <div class="modal" id="appointmentModal">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-content glass">
+      <button class="modal-close" id="closeModal" aria-label="Close modal">×</button>
+
+      <div class="modal-grid">
+        <div class="modal-left">
+          <p class="small-label">Appointment Portal</p>
+          <h3>Book your consultation</h3>
+          <p>
+            Replace the placeholder below with your real booking link or appointment form.
+          </p>
+
+          <div class="modal-note glass">
+            <strong>Calendly URL:</strong><br />
+            https://calendly.com/your-clinic-link
+          </div>
+
+          <div class="modal-note glass">
+            You can also embed WhatsApp booking, phone CTA, Google Form, or a custom booking page.
+          </div>
+        </div>
+
+        <div class="modal-right">
+          <iframe
+            title="Calendly Booking"
+            src="https://calendly.com/your-clinic-link"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
