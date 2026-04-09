@@ -1,455 +1,980 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-  <title>Niramayam Physiotherapy Clinic</title>
-  <meta
-    name="description"
-    content="Niramayam Physiotherapy Clinic - futuristic, premium physiotherapy care website."
-  />
+:root {
+  --bg: #030712;
+  --bg-soft: #07111f;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --muted-2: #94a3b8;
+  --line: rgba(255, 255, 255, 0.1);
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-strong: rgba(255, 255, 255, 0.08);
+  --cyan: #67e8f9;
+  --sky: #38bdf8;
+  --violet: #a78bfa;
+  --shadow: 0 20px 80px rgba(0, 0, 0, 0.35);
+  --radius: 28px;
+  --radius-lg: 34px;
+  --container: 1280px;
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="page-bg"></div>
-  <div class="noise"></div>
+html {
+  scroll-behavior: smooth;
+}
 
-  <div class="floating-orbs">
-    <span class="orb orb-1"></span>
-    <span class="orb orb-2"></span>
-    <span class="orb orb-3"></span>
-    <span class="orb orb-4"></span>
-    <span class="orb orb-5"></span>
-    <span class="orb orb-6"></span>
-    <span class="orb orb-7"></span>
-    <span class="orb orb-8"></span>
-  </div>
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
 
-  <header class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="#home" class="brand">
-        <div class="brand-icon">✦</div>
-        <div>
-          <p class="brand-top">NIRAMAYAM</p>
-          <p class="brand-bottom">Physiotherapy Clinic</p>
-        </div>
-      </a>
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-      <nav class="desktop-nav">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#conditions">Treatments</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
 
-      <div class="nav-actions">
-        <button class="btn btn-primary" id="bookBtn">Book Appointment</button>
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
+button {
+  border: none;
+  cursor: pointer;
+}
 
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#conditions">Treatments</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <button class="btn btn-primary mobile-book" id="mobileBookBtn">Book Appointment</button>
-    </div>
-  </header>
+img {
+  max-width: 100%;
+  display: block;
+}
 
-  <main>
-    <section class="hero section" id="home">
-      <div class="container hero-grid">
-        <div class="hero-left reveal">
-          <div class="eyebrow">
-            <span>✦</span>
-            Healing Through Innovation
-          </div>
+.container {
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+}
 
-          <h1>
-            Futuristic care for a
-            <span class="gradient-text">stronger, pain-free tomorrow.</span>
-          </h1>
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -4;
+  background:
+    radial-gradient(circle at top, rgba(14, 165, 233, 0.18), transparent 25%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.18), transparent 20%),
+    linear-gradient(180deg, #020617 0%, #030712 35%, #020617 100%);
+}
 
-          <p class="hero-text">
-            Niramayam Physiotherapy Clinic combines compassionate treatment,
-            modern rehabilitation thinking, and beautifully guided patient care
-            to help people move better, recover faster, and live with confidence.
-          </p>
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mask-image: radial-gradient(circle at center, black, transparent 85%);
+}
 
-          <div class="hero-actions">
-            <button class="btn btn-primary big-btn" id="heroBookBtn">
-              Book Appointment
-            </button>
-            <a href="#services" class="btn btn-secondary big-btn">
-              Explore Treatments
-            </a>
-          </div>
+.floating-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
 
-          <div class="metrics">
-            <div class="glass metric-card reveal">
-              <h3>100%</h3>
-              <p>Personalized care plans</p>
-            </div>
-            <div class="glass metric-card reveal">
-              <h3>1:1</h3>
-              <p>Focused recovery approach</p>
-            </div>
-            <div class="glass metric-card reveal">
-              <h3>24/7</h3>
-              <p>Comfort-first experience</p>
-            </div>
-            <div class="glass metric-card reveal">
-              <h3>Next-Gen</h3>
-              <p>Modern rehab mindset</p>
-            </div>
-          </div>
-        </div>
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0.75;
+  animation: floatOrb 14s ease-in-out infinite;
+}
 
-        <div class="hero-right reveal">
-          <div class="hero-image-wrap glass">
-            <img
-              src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1400&q=80"
-              alt="Modern physiotherapy treatment session"
-            />
-            <div class="hero-image-card glass">
-              <div>
-                <p class="small-label">Advanced Recovery Care</p>
-                <h3>
-                  Personalized physiotherapy with a premium, future-ready experience
-                </h3>
-              </div>
-              <div class="mini-icon">❤</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.orb-1 {
+  width: 220px;
+  height: 220px;
+  top: 8%;
+  left: 4%;
+  background: radial-gradient(circle, rgba(56,189,248,0.28), transparent 70%);
+}
 
-    <section class="section feature-strip-section">
-      <div class="container">
-        <div class="glass feature-strip">
-          <div class="feature-box reveal">
-            <div class="feature-icon">✓</div>
-            <h3>Smart recovery planning</h3>
-            <p>
-              Every patient journey can be structured with clarity, comfort, and measurable progress.
-            </p>
-          </div>
-          <div class="feature-box reveal">
-            <div class="feature-icon">✓</div>
-            <h3>Human-first treatment</h3>
-            <p>
-              Modern clinical thinking blended with compassion, trust, and careful guidance.
-            </p>
-          </div>
-          <div class="feature-box reveal">
-            <div class="feature-icon">✓</div>
-            <h3>Premium clinic presence</h3>
-            <p>
-              A visually elevated brand experience that feels advanced, credible, and calming.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+.orb-2 {
+  width: 180px;
+  height: 180px;
+  top: 18%;
+  left: 72%;
+  background: radial-gradient(circle, rgba(167,139,250,0.24), transparent 70%);
+  animation-delay: -2s;
+}
 
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div class="eyebrow center">
-            <span>✦</span>
-            Signature Services
-          </div>
-          <h2>A next-generation clinic website experience</h2>
-          <p>
-            This layout is designed to feel premium, trustworthy, and visually memorable while still being easy for patients to understand and use.
-          </p>
-        </div>
+.orb-3 {
+  width: 260px;
+  height: 260px;
+  top: 54%;
+  left: 10%;
+  background: radial-gradient(circle, rgba(34,211,238,0.22), transparent 70%);
+  animation-delay: -4s;
+}
 
-        <div class="service-grid">
-          <article class="glass service-card reveal">
-            <div class="card-icon">🧠</div>
-            <h3>Neuro Physiotherapy</h3>
-            <p>
-              Specialized rehab support for stroke, paralysis, Parkinson’s disease, facial palsy, cerebral palsy, and spinal cord conditions.
-            </p>
-            <span class="card-link">Learn more →</span>
-          </article>
+.orb-4 {
+  width: 190px;
+  height: 190px;
+  top: 60%;
+  left: 78%;
+  background: radial-gradient(circle, rgba(168,85,247,0.24), transparent 70%);
+  animation-delay: -6s;
+}
 
-          <article class="glass service-card reveal">
-            <div class="card-icon">❤</div>
-            <h3>Pain Management</h3>
-            <p>
-              Advanced treatment plans for cervical pain, back pain, shoulder pain, knee pain, sciatica, heel pain, and arthritis.
-            </p>
-            <span class="card-link">Learn more →</span>
-          </article>
+.orb-5 {
+  width: 140px;
+  height: 140px;
+  top: 36%;
+  left: 45%;
+  background: radial-gradient(circle, rgba(103,232,249,0.18), transparent 70%);
+  animation-delay: -8s;
+}
 
-          <article class="glass service-card reveal">
-            <div class="card-icon">⚡</div>
-            <h3>Mobility Recovery</h3>
-            <p>
-              Personalized gait training, posture correction, balance rehab, and movement restoration for walking difficulties.
-            </p>
-            <span class="card-link">Learn more →</span>
-          </article>
+.orb-6 {
+  width: 240px;
+  height: 240px;
+  top: 78%;
+  left: 56%;
+  background: radial-gradient(circle, rgba(125,211,252,0.18), transparent 70%);
+  animation-delay: -10s;
+}
 
-          <article class="glass service-card reveal">
-            <div class="card-icon">🏃</div>
-            <h3>Sports Injury Rehab</h3>
-            <p>
-              High-performance recovery programs for muscle strain, ligament issues, joint instability, and return-to-sport rehab.
-            </p>
-            <span class="card-link">Learn more →</span>
-          </article>
+.orb-7 {
+  width: 160px;
+  height: 160px;
+  top: 82%;
+  left: 18%;
+  background: radial-gradient(circle, rgba(147,197,253,0.18), transparent 70%);
+  animation-delay: -3s;
+}
 
-          <article class="glass service-card reveal">
-            <div class="card-icon">🛡</div>
-            <h3>Joint & Shoulder Care</h3>
-            <p>
-              Focused recovery for frozen shoulder, stiffness, reduced range of motion, and long-standing joint discomfort.
-            </p>
-            <span class="card-link">Learn more →</span>
-          </article>
+.orb-8 {
+  width: 170px;
+  height: 170px;
+  top: 8%;
+  left: 48%;
+  background: radial-gradient(circle, rgba(192,132,252,0.16), transparent 70%);
+  animation-delay: -7s;
+}
 
-          <article class="glass service-card reveal">
-            <div class="card-icon">〰</div>
-            <h3>Advanced Therapy Plans</h3>
-            <p>
-              Structured, measurable, and modern recovery journeys with progress-based treatment designed around your lifestyle.
-            </p>
-            <span class="card-link">Learn more →</span>
-          </article>
-        </div>
-      </div>
-    </section>
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(20px, -30px, 0) scale(1.08);
+  }
+  50% {
+    transform: translate3d(-10px, 14px, 0) scale(0.95);
+  }
+  75% {
+    transform: translate3d(16px, -10px, 0) scale(1.04);
+  }
+}
 
-    <section class="section" id="conditions">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div class="eyebrow center">
-            <span>✦</span>
-            Treatment Focus
-          </div>
-          <h2>Conditions we commonly support</h2>
-          <p>
-            You can replace, add, or reorganize these based on your exact services. The design already makes them look premium and highly scannable.
-          </p>
-        </div>
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
 
-        <div class="conditions-grid">
-          <div class="glass condition-card reveal">Stroke / Paralysis</div>
-          <div class="glass condition-card reveal">Parkinson’s Disease</div>
-          <div class="glass condition-card reveal">Facial Paralysis</div>
-          <div class="glass condition-card reveal">Walking Difficulties</div>
-          <div class="glass condition-card reveal">Cerebral Palsy</div>
-          <div class="glass condition-card reveal">Cervical Pain</div>
-          <div class="glass condition-card reveal">Spinal Cord Injury</div>
-          <div class="glass condition-card reveal">Neck / Shoulder / Back Pain</div>
-          <div class="glass condition-card reveal">Knee & Joint Pain</div>
-          <div class="glass condition-card reveal">Frozen Shoulder</div>
-          <div class="glass condition-card reveal">Arthritis</div>
-          <div class="glass condition-card reveal">Sciatica</div>
-          <div class="glass condition-card reveal">Heel Pain</div>
-          <div class="glass condition-card reveal">Sports Injuries</div>
-        </div>
-      </div>
-    </section>
+.section {
+  padding: 110px 0;
+  position: relative;
+}
 
-    <section class="section" id="about">
-      <div class="container about-grid">
-        <div class="about-image reveal">
-          <div class="glass image-frame">
-            <img
-              src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a41?auto=format&fit=crop&w=1200&q=80"
-              alt="Physiotherapy consultation in a clean modern clinic"
-            />
-          </div>
-        </div>
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(2, 6, 23, 0.56);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
 
-        <div class="about-content reveal">
-          <div class="eyebrow">
-            <span>✦</span>
-            About the Clinic
-          </div>
+.navbar.scrolled {
+  background: rgba(2, 6, 23, 0.78);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
 
-          <h2>
-            Designed around trust, comfort, and modern rehabilitation.
-          </h2>
+.nav-inner {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
 
-          <p>
-            Led by <strong>Dr. Sumit Agrawal (BPT)</strong>, Niramayam Physiotherapy Clinic aims to create an elevated care experience where advanced treatment thinking meets genuine, compassionate support.
-          </p>
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 
-          <p>
-            This website concept gives your clinic a premium digital identity. It feels futuristic without looking confusing, and it keeps patient trust at the centre of every section.
-          </p>
+.brand-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(103,232,249,0.2), rgba(167,139,250,0.2));
+  border: 1px solid rgba(103,232,249,0.18);
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.16);
+  color: var(--cyan);
+  font-size: 18px;
+}
 
-          <div class="about-points">
-            <div class="glass point-card reveal">✓ Responsive across mobile, tablet, and desktop</div>
-            <div class="glass point-card reveal">✓ Animated sections with premium glassmorphism</div>
-            <div class="glass point-card reveal">✓ Strong appointment-focused conversion flow</div>
-            <div class="glass point-card reveal">✓ Easy to customize with your real content</div>
-          </div>
-        </div>
-      </div>
-    </section>
+.brand-top {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: rgba(103, 232, 249, 0.86);
+  font-weight: 600;
+}
 
-    <section class="section testimonials-section">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div class="eyebrow center">
-            <span>✦</span>
-            Patient Experience
-          </div>
-          <h2>Clean, premium, and confidence-building</h2>
-          <p>
-            These testimonial cards are placeholders for now. Replace them later with real reviews from your patients or Google ratings.
-          </p>
-        </div>
+.brand-bottom {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
 
-        <div class="testimonial-grid">
-          <article class="glass testimonial-card reveal">
-            <div class="stars">★★★★★</div>
-            <p>
-              “The clinic experience feels modern, calm, and deeply caring. The sessions were structured, and I could genuinely feel progress week by week.”
-            </p>
-            <div class="testimonial-meta">
-              <h4>Patient Recovery Story</h4>
-              <span>Rehab & wellness feedback</span>
-            </div>
-          </article>
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
 
-          <article class="glass testimonial-card reveal">
-            <div class="stars">★★★★★</div>
-            <p>
-              “What stood out was the attention to detail. Every exercise was explained clearly, and the recovery plan felt personal instead of generic.”
-            </p>
-            <div class="testimonial-meta">
-              <h4>Mobility Improvement Case</h4>
-              <span>Rehab & wellness feedback</span>
-            </div>
-          </article>
+.desktop-nav a,
+.footer-links a {
+  color: var(--muted);
+  transition: 0.25s ease;
+}
 
-          <article class="glass testimonial-card reveal">
-            <div class="stars">★★★★★</div>
-            <p>
-              “Within a short time, my pain reduced significantly and my confidence came back. The treatment felt scientific and human at the same time.”
-            </p>
-            <div class="testimonial-meta">
-              <h4>Pain Relief Journey</h4>
-              <span>Rehab & wellness feedback</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+.desktop-nav a:hover,
+.footer-links a:hover {
+  color: white;
+}
 
-    <section class="section contact-section" id="contact">
-      <div class="container">
-        <div class="glass contact-box reveal">
-          <div class="contact-left">
-            <div class="eyebrow">
-              <span>✦</span>
-              Ready to Begin?
-            </div>
-            <h2>Let your website feel as advanced as your care.</h2>
-            <p>
-              This section is made to convert visitors into appointments. You can connect it directly to Calendly, WhatsApp, phone calls, or a custom form.
-            </p>
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-            <div class="contact-actions">
-              <button class="btn btn-primary big-btn" id="contactBookBtn">
-                Book Appointment Now
-              </button>
-              <a href="tel:+919999999999" class="btn btn-secondary big-btn">
-                Call Clinic
-              </a>
-            </div>
-          </div>
+.menu-btn {
+  display: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--line);
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 12px;
+}
 
-          <div class="contact-right">
-            <div class="info-card glass">
-              <h4>Location</h4>
-              <p>Gwalior, Madhya Pradesh</p>
-            </div>
-            <div class="info-card glass">
-              <h4>Phone</h4>
-              <p>+91 99999 99999</p>
-            </div>
-            <div class="info-card glass">
-              <h4>Appointments</h4>
-              <p>Connect this with your real Calendly link</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+.menu-btn span {
+  height: 2px;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+}
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© 2026 Niramayam Physiotherapy Clinic. Crafted with a premium futuristic interface.</p>
-      <div class="footer-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </footer>
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 16px 16px;
+}
 
-  <div class="modal" id="appointmentModal">
-    <div class="modal-overlay" id="modalOverlay"></div>
-    <div class="modal-content glass">
-      <button class="modal-close" id="closeModal" aria-label="Close modal">×</button>
+.mobile-menu.active {
+  display: flex;
+}
 
-      <div class="modal-grid">
-        <div class="modal-left">
-          <p class="small-label">Appointment Portal</p>
-          <h3>Book your consultation</h3>
-          <p>
-            Replace the placeholder below with your real booking link or appointment form.
-          </p>
+.mobile-menu a,
+.mobile-book {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--line);
+}
 
-          <div class="modal-note glass">
-            <strong>Calendly URL:</strong><br />
-            https://calendly.com/your-clinic-link
-          </div>
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
 
-          <div class="modal-note glass">
-            You can also embed WhatsApp booking, phone CTA, Google Form, or a custom booking page.
-          </div>
-        </div>
+.btn:hover {
+  transform: translateY(-2px);
+}
 
-        <div class="modal-right">
-          <iframe
-            title="Calendly Booking"
-            src="https://calendly.com/your-clinic-link"
-            loading="lazy"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
+.btn-primary {
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #07111f;
+  background: linear-gradient(135deg, var(--cyan), var(--sky));
+  box-shadow: 0 12px 40px rgba(56, 189, 248, 0.25);
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.btn-secondary {
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+}
+
+.big-btn {
+  min-height: 56px;
+  padding: 16px 28px;
+}
+
+.hero {
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 42px;
+}
+
+.eyebrow {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(103,232,249,0.1);
+  border: 1px solid rgba(103,232,249,0.18);
+  color: #d6f9ff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.eyebrow.center {
+  margin: 0 auto 18px;
+}
+
+.hero-left h1 {
+  font-size: clamp(3rem, 7vw, 5.3rem);
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-top: 22px;
+  max-width: 900px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--cyan), #7dd3fc, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-text {
+  max-width: 760px;
+  margin-top: 26px;
+  font-size: 1.12rem;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.hero-actions {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.metrics {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.metric-card {
+  padding: 24px 20px;
+  border-radius: var(--radius);
+}
+
+.metric-card h3 {
+  font-size: 1.7rem;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.metric-card p {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.hero-image-wrap {
+  position: relative;
+  padding: 14px;
+  border-radius: 34px;
+  overflow: hidden;
+}
+
+.hero-image-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.14), transparent 35%, transparent 65%, rgba(255,255,255,0.08));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 28px;
+}
+
+.hero-image-card {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 22px;
+  border-radius: 28px;
+  background: rgba(2, 6, 23, 0.55);
+}
+
+.small-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+
+.hero-image-card h3 {
+  font-size: 1.55rem;
+  line-height: 1.3;
+}
+
+.mini-icon {
+  min-width: 52px;
+  min-height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  border: 1px solid rgba(103,232,249,0.18);
+  background: rgba(103,232,249,0.1);
+  color: var(--cyan);
+  font-size: 20px;
+}
+
+.feature-strip-section {
+  padding-top: 20px;
+}
+
+.feature-strip {
+  border-radius: 34px;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.feature-box {
+  padding: 26px;
+  border-radius: 28px;
+  background: rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.feature-icon,
+.card-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  margin-bottom: 18px;
+  background: rgba(103,232,249,0.1);
+  border: 1px solid rgba(103,232,249,0.16);
+  color: var(--cyan);
+  font-size: 24px;
+}
+
+.feature-box h3,
+.service-card h3,
+.testimonial-meta h4,
+.info-card h4 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.feature-box p,
+.service-card p,
+.section-heading p,
+.about-content p,
+.testimonial-card p,
+.info-card p,
+.modal-left p {
+  color: var(--muted);
+}
+
+.section-heading {
+  max-width: 860px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.section-heading h2,
+.about-content h2,
+.contact-left h2 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.08;
+  margin-bottom: 16px;
+  color: white;
+  letter-spacing: -0.03em;
+}
+
+.section-heading p,
+.about-content p,
+.contact-left p {
+  font-size: 1.04rem;
+  line-height: 1.9;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.service-card {
+  padding: 28px;
+  border-radius: 30px;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover,
+.condition-card:hover,
+.point-card:hover,
+.testimonial-card:hover,
+.info-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(103,232,249,0.22);
+  background: rgba(255,255,255,0.08);
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.condition-card {
+  padding: 22px 20px;
+  border-radius: 24px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.image-frame {
+  padding: 14px;
+  border-radius: 34px;
+  overflow: hidden;
+}
+
+.image-frame img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  border-radius: 28px;
+}
+
+.about-content p + p {
+  margin-top: 16px;
+}
+
+.about-points {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.point-card {
+  padding: 18px 18px;
+  border-radius: 22px;
+  transition: 0.3s ease;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.testimonial-card {
+  padding: 28px;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.stars {
+  font-size: 1.1rem;
+  color: var(--cyan);
+  margin-bottom: 16px;
+}
+
+.testimonial-card p {
+  line-height: 1.95;
+}
+
+.testimonial-meta {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.testimonial-meta span {
+  color: var(--muted-2);
+  font-size: 0.95rem;
+}
+
+.contact-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 34px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+}
+
+.contact-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(56,189,248,0.18), transparent 25%),
+    radial-gradient(circle at bottom left, rgba(168,85,247,0.18), transparent 25%);
+  pointer-events: none;
+}
+
+.contact-left,
+.contact-right {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-actions {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.contact-right {
+  display: grid;
+  gap: 16px;
+}
+
+.info-card {
+  padding: 24px;
+  border-radius: 26px;
+  background: rgba(0, 0, 0, 0.12);
+  transition: 0.3s ease;
+}
+
+.footer {
+  padding: 28px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  background: rgba(2, 6, 23, 0.45);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.footer-inner p {
+  color: var(--muted-2);
+  font-size: 0.95rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: none;
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show .modal-overlay {
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  width: min(1100px, calc(100% - 32px));
+  margin: 4vh auto 0;
+  border-radius: 34px;
+  overflow: hidden;
+  background: var(--bg-soft);
+  transform: translateY(30px) scale(0.97);
+  opacity: 0;
+  transition: transform 0.32s ease, opacity 0.32s ease;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.06);
+  color: white;
+  font-size: 30px;
+  line-height: 1;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  min-height: 640px;
+}
+
+.modal-left {
+  padding: 40px 32px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.modal-left h3 {
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+
+.modal-note {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 22px;
+}
+
+.modal-right {
+  padding: 18px;
+}
+
+.modal-right iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  border: none;
+  border-radius: 26px;
+  background: rgba(255,255,255,0.04);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1200px) {
+  .metrics,
+  .conditions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-grid,
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-grid,
+  .about-grid,
+  .contact-box,
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+}
+
+@media (max-width: 900px) {
+  .desktop-nav,
+  .nav-actions .btn-primary {
+    display: none;
+  }
+
+  .menu-btn {
+    display: inline-flex;
+  }
+
+  .feature-strip,
+  .about-points {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image-wrap img,
+  .image-frame img {
+    height: 420px;
+  }
+
+  .hero-image-card {
+    position: static;
+    margin-top: 16px;
+  }
+
+  .hero-left h1 {
+    font-size: clamp(2.7rem, 12vw, 4.3rem);
+  }
+
+  .section {
+    padding: 90px 0;
+  }
+
+  .contact-box,
+  .feature-strip,
+  .modal-left,
+  .modal-right {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: min(var(--container), calc(100% - 20px));
+  }
+
+  .metrics,
+  .service-grid,
+  .conditions-grid,
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions,
+  .contact-actions,
+  .footer-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-text,
+  .section-heading p,
+  .about-content p,
+  .contact-left p {
+    font-size: 0.98rem;
+  }
+
+  .hero-image-wrap,
+  .image-frame,
+  .contact-box,
+  .feature-strip,
+  .modal-content {
+    border-radius: 26px;
+  }
+
+  .hero-image-wrap img,
+  .image-frame img {
+    height: 340px;
+  }
+
+  .modal-right iframe {
+    min-height: 420px;
+  }
+
+  .modal-left h3,
+  .section-heading h2,
+  .about-content h2,
+  .contact-left h2 {
+    font-size: 2rem;
+  }
+}
