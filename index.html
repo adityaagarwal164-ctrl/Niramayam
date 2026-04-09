@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Website</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Niramayam Physiotherapy Clinic</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello world</h1>
-  <p>My new website is live.</p>
+  <!-- Navigation -->
+  <header>
+    <div class="logo">Niramayam Clinic</div>
+    <nav>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><button id="bookBtn">Book Appointment</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Niramayam Physiotherapy Clinic</h1>
+    <p>Modern physiotherapy solutions for a healthier tomorrow.</p>
+    <button id="heroBookBtn">Book Appointment</button>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service">Stroke Rehabilitation</div>
+      <div class="service">Parkinson’s Therapy</div>
+      <div class="service">Cerebral Palsy Care</div>
+      <div class="service">Sports Injury Recovery</div>
+      <div class="service">Arthritis Management</div>
+      <div class="service">Spinal Cord Injury Therapy</div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Led by Dr. Sumit Agrawal (BPT), our clinic combines advanced machines and manual therapy to treat a wide range of conditions with compassion and expertise.</p>
+  </section>
+
+  <!-- Appointment Modal -->
+  <div id="appointmentModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Book Your Appointment</h2>
+      <!-- Calendly Embed -->
+      <div class="calendly-inline-widget" 
+           data-url="YOUR_CALENDLY_LINK_HERE" 
+           style="min-width:320px;height:630px;">
+      </div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Niramayam Physiotherapy Clinic | Gwalior, MP</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>

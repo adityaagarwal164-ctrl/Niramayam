@@ -1,0 +1,36 @@
+/* General Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', sans-serif; background: #f9f9f9; color: #333; }
+
+/* Header */
+header { display: flex; justify-content: space-between; align-items: center; padding: 20px; background: #0a3d62; color: #fff; }
+header .logo { font-size: 1.5em; font-weight: bold; }
+nav ul { list-style: none; display: flex; gap: 20px; }
+nav ul li { display: inline; }
+nav ul li button, nav ul li a { background: #1e90ff; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; text-decoration: none; }
+nav ul li button:hover, nav ul li a:hover { background: #0a74da; }
+
+/* Hero */
+.hero { text-align: center; padding: 100px 20px; background: linear-gradient(to right, #1e90ff, #0a3d62); color: #fff; }
+.hero h1 { font-size: 2.5em; margin-bottom: 20px; }
+.hero p { font-size: 1.2em; margin-bottom: 30px; }
+.hero button { background: #fff; color: #0a3d62; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+.hero button:hover { background: #f1f1f1; }
+
+/* Services */
+#services { padding: 60px 20px; text-align: center; }
+#services h2 { margin-bottom: 40px; font-size: 2em; }
+.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.service { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+/* About */
+#about { padding: 60px 20px; text-align: center; background: #eef2f3; }
+#about h2 { margin-bottom: 20px; }
+
+/* Modal */
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); }
+.modal-content { background: #fff; margin: 10% auto; padding: 20px; border-radius: 10px; width: 80%; max-width: 700px; position: relative; }
+.close { position: absolute; top: 10px; right: 20px; font-size: 1.5em; cursor: pointer; }
+
+/* Footer */
+footer { text-align: center; padding: 20px; background: #0a3d62; color: #fff; }
